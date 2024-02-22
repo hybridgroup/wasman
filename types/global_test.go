@@ -4,10 +4,10 @@ import (
 	"bytes"
 	"errors"
 	"reflect"
-	"strconv"
 	"testing"
 
 	"github.com/c0mm4nd/wasman/types"
+	"github.com/c0mm4nd/wasman/utils"
 )
 
 func TestReadGlobalType(t *testing.T) {
@@ -27,7 +27,7 @@ func TestReadGlobalType(t *testing.T) {
 		{bytes: []byte{0x7e, 0x00}, exp: &types.GlobalType{ValType: types.ValueTypeI64, Mutable: false}},
 		{bytes: []byte{0x7e, 0x01}, exp: &types.GlobalType{ValType: types.ValueTypeI64, Mutable: true}},
 	} {
-		t.Run(strconv.Itoa(i), func(t *testing.T) {
+		t.Run(utils.IntToString(i), func(t *testing.T) {
 			actual, err := types.ReadGlobalType(bytes.NewReader(c.bytes))
 			if err != nil {
 				t.Fail()

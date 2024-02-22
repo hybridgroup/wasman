@@ -5,12 +5,12 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"strconv"
 	"strings"
 
 	"github.com/c0mm4nd/wasman"
 	"github.com/c0mm4nd/wasman/config"
 	"github.com/c0mm4nd/wasman/tollstation"
+	"github.com/c0mm4nd/wasman/utils"
 )
 
 var strMainModuleFile = flag.String("main", "module.wasm", "main module")
@@ -75,10 +75,7 @@ func main() {
 			continue
 		}
 
-		arg, err := strconv.ParseUint(strArg, 10, 64)
-		if err != nil {
-			panic(err)
-		}
+		arg := uint64(utils.StringToInt(strArg))
 
 		args = append(args, arg)
 	}

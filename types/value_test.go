@@ -3,10 +3,10 @@ package types_test
 import (
 	"bytes"
 	"reflect"
-	"strconv"
 	"testing"
 
 	"github.com/c0mm4nd/wasman/types"
+	"github.com/c0mm4nd/wasman/utils"
 )
 
 func TestReadValueTypes(t *testing.T) {
@@ -29,7 +29,7 @@ func TestReadValueTypes(t *testing.T) {
 			exp: []types.ValueType{types.ValueTypeI32, types.ValueTypeI64, types.ValueTypeF32, types.ValueTypeF64},
 		},
 	} {
-		t.Run(strconv.Itoa(i), func(t *testing.T) {
+		t.Run(utils.IntToString(i), func(t *testing.T) {
 			actual, err := types.ReadValueTypes(bytes.NewReader(c.bytes), c.num)
 			if err != nil {
 				t.Fail()
