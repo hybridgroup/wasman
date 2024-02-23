@@ -3,8 +3,8 @@ package wasm
 import (
 	"testing"
 
-	"github.com/c0mm4nd/wasman/expr"
-	"github.com/c0mm4nd/wasman/stacks"
+	"github.com/hybridgroup/wasman/expr"
+	"github.com/hybridgroup/wasman/stacks"
 )
 
 func Test_getLocal(t *testing.T) {
@@ -90,7 +90,7 @@ func Test_getGlobal(t *testing.T) {
 	globals := []uint64{0, 0, 0, 0, 0, exp}
 
 	vm := &Instance{
-		Active:      ctx,
+		Active:       ctx,
 		OperandStack: stacks.NewOperandStack(),
 		Globals:      globals,
 	}

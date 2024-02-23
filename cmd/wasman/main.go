@@ -7,10 +7,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/c0mm4nd/wasman"
-	"github.com/c0mm4nd/wasman/config"
-	"github.com/c0mm4nd/wasman/tollstation"
-	"github.com/c0mm4nd/wasman/utils"
+	"github.com/hybridgroup/wasman"
+	"github.com/hybridgroup/wasman/config"
+	"github.com/hybridgroup/wasman/tollstation"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 var strMainModuleFile = flag.String("main", "module.wasm", "main module")

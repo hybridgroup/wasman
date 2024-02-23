@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/c0mm4nd/wasman/config"
+	"github.com/hybridgroup/wasman/config"
 
-	"github.com/c0mm4nd/wasman/stacks"
+	"github.com/hybridgroup/wasman/stacks"
 
-	"github.com/c0mm4nd/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/leb128decode"
 )
 
 // Instance is an instantiated module

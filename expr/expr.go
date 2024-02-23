@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/c0mm4nd/wasman/leb128decode"
-	"github.com/c0mm4nd/wasman/types"
-	"github.com/c0mm4nd/wasman/utils"
+	"github.com/hybridgroup/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/types"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 // Expression is sequences of instructions terminated by an end marker.

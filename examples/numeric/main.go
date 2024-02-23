@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/c0mm4nd/wasman"
-	"github.com/c0mm4nd/wasman/config"
+	"github.com/hybridgroup/wasman"
+	"github.com/hybridgroup/wasman/config"
 )
 
 func FibonacciRecursion(n int) int {

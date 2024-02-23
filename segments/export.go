@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/c0mm4nd/wasman/leb128decode"
-	"github.com/c0mm4nd/wasman/types"
+	"github.com/hybridgroup/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/types"
 )
 
 // ExportDesc means export descriptions, which describe an export in one wasman.Module

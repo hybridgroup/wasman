@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/c0mm4nd/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/leb128decode"
 )
 
 // ErrInvalidTypeByte means the type byte mismatches the one from wasm binary

@@ -1,8 +1,8 @@
 package wasm
 
 import (
-	"github.com/c0mm4nd/wasman/config"
-	"github.com/c0mm4nd/wasman/types"
+	"github.com/hybridgroup/wasman/config"
+	"github.com/hybridgroup/wasman/types"
 )
 
 // Memory is an instance of the memory value

@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/c0mm4nd/wasman/segments"
+	"github.com/hybridgroup/wasman/segments"
 )
 
 func TestReadCodeSegment(t *testing.T) {

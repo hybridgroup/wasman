@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/c0mm4nd/wasman/utils"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 func TestReadFloat32(t *testing.T) {

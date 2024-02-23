@@ -1,6 +1,6 @@
 package wasman
 
-import "github.com/c0mm4nd/wasman/wasm"
+import "github.com/hybridgroup/wasman/wasm"
 
 // Instance is same to wasm.Instance
 type Instance = wasm.Instance

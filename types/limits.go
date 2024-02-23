@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/c0mm4nd/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/leb128decode"
 )
 
 // Limits classify the size range of resizeable storage associated with memory types and table types

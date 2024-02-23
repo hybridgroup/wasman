@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/c0mm4nd/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/leb128decode"
 )
 
 func TestDecodeUint32(t *testing.T) {

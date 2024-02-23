@@ -5,8 +5,8 @@ import (
 	"io"
 	"io/ioutil"
 
-	"github.com/c0mm4nd/wasman/config"
-	"github.com/c0mm4nd/wasman/wasm"
+	"github.com/hybridgroup/wasman/config"
+	"github.com/hybridgroup/wasman/wasm"
 )
 
 // Module is same to wasm.Module

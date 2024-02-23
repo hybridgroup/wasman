@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/c0mm4nd/wasman/expr"
-	"github.com/c0mm4nd/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/expr"
+	"github.com/hybridgroup/wasman/leb128decode"
 )
 
 // ElemSegment is one unit of the wasm.Module's ElementsSection, initializing

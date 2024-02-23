@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/c0mm4nd/wasman/expr"
+	"github.com/hybridgroup/wasman/expr"
 )
 
 func TestReadExpr(t *testing.T) {

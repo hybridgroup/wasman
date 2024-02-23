@@ -5,9 +5,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/c0mm4nd/wasman/expr"
-	"github.com/c0mm4nd/wasman/segments"
-	"github.com/c0mm4nd/wasman/types"
+	"github.com/hybridgroup/wasman/expr"
+	"github.com/hybridgroup/wasman/segments"
+	"github.com/hybridgroup/wasman/types"
 )
 
 func TestReadGlobalSegment(t *testing.T) {

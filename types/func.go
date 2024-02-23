@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/c0mm4nd/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/leb128decode"
 )
 
 // FuncType classify the signature of functions, mapping a vector of parameters to a vector of results, written as follows.

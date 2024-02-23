@@ -1,8 +1,8 @@
 # WASMan (WebAssembly Manager)
 
-[![](https://godoc.org/github.com/c0mm4nd/wasman?status.svg)](http://godoc.org/github.com/c0mm4nd/wasman)
-[![Go Report Card](https://goreportcard.com/badge/github.com/c0mm4nd/wasman)](https://goreportcard.com/report/github.com/c0mm4nd/wasman)
-![CI](https://github.com/c0mm4nd/wasman/workflows/CI/badge.svg)
+[![](https://godoc.org/github.com/hybridgroup/wasman?status.svg)](http://godoc.org/github.com/hybridgroup/wasman)
+[![Go Report Card](https://goreportcard.com/badge/github.com/hybridgroup/wasman)](https://goreportcard.com/report/github.com/hybridgroup/wasman)
+![CI](https://github.com/hybridgroup/wasman/workflows/CI/badge.svg)
 
 Another wasm interpreter engine for gophers.
 
@@ -13,7 +13,7 @@ Another wasm interpreter engine for gophers.
 Install
 
 ```bash
-go install github.com/c0mm4nd/wasman/cmd/wasman
+go install github.com/hybridgroup/wasman/cmd/wasman
 ```
 
 ```bash
@@ -29,7 +29,7 @@ Usage of ./wasman:
         the maximum toll in simple toll station
 ```
 
-Example: [numeric.wasm](https://github.com/C0MM4ND/minimum-wasm-rs/releases/latest)
+Example: [numeric.wasm](https://github.com/hybridgroup/minimum-wasm-rs/releases/latest)
 
 ```bash
 $ wasman -main numeric.wasm -func fib 20 # calc the fibonacci number
@@ -53,7 +53,7 @@ main.main()
 
 ### Go Embedding
 
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/c0mm4nd/wasman)](https://pkg.go.dev/github.com/c0mm4nd/wasman)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/hybridgroup/wasman)](https://pkg.go.dev/github.com/hybridgroup/wasman)
 
 #### Example
 

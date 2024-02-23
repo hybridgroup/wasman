@@ -3,9 +3,9 @@ package wasm
 import (
 	"testing"
 
-	"github.com/c0mm4nd/wasman/expr"
-	"github.com/c0mm4nd/wasman/stacks"
-	"github.com/c0mm4nd/wasman/types"
+	"github.com/hybridgroup/wasman/expr"
+	"github.com/hybridgroup/wasman/stacks"
+	"github.com/hybridgroup/wasman/types"
 )
 
 func TestHostFunction_Call(t *testing.T) {

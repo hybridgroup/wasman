@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/c0mm4nd/wasman/stacks"
+	"github.com/hybridgroup/wasman/stacks"
 )
 
 func TestVirtualMachineOperandStack(t *testing.T) {

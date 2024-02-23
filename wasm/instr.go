@@ -1,8 +1,8 @@
 package wasm
 
 import (
-	"github.com/c0mm4nd/wasman/expr"
-	"github.com/c0mm4nd/wasman/stacks"
+	"github.com/hybridgroup/wasman/expr"
+	"github.com/hybridgroup/wasman/stacks"
 )
 
 // Frame is the context data of one instance

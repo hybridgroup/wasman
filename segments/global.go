@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/c0mm4nd/wasman/expr"
-	"github.com/c0mm4nd/wasman/types"
+	"github.com/hybridgroup/wasman/expr"
+	"github.com/hybridgroup/wasman/types"
 )
 
 // GlobalSegment is one unit of the wasm.Module's GlobalSection

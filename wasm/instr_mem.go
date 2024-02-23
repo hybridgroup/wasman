@@ -4,7 +4,7 @@ import (
 	"encoding/binary"
 	"errors"
 
-	"github.com/c0mm4nd/wasman/config"
+	"github.com/hybridgroup/wasman/config"
 )
 
 // ErrPtrOutOfBounds will be throw when the pointer visiting a pos out of the range of memory

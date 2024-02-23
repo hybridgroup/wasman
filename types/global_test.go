@@ -6,8 +6,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/c0mm4nd/wasman/types"
-	"github.com/c0mm4nd/wasman/utils"
+	"github.com/hybridgroup/wasman/types"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 func TestReadGlobalType(t *testing.T) {

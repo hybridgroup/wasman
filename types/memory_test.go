@@ -5,9 +5,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/c0mm4nd/wasman/utils"
+	"github.com/hybridgroup/wasman/utils"
 
-	"github.com/c0mm4nd/wasman/types"
+	"github.com/hybridgroup/wasman/types"
 )
 
 func TestReadMemoryType(t *testing.T) {

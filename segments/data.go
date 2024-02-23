@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/c0mm4nd/wasman/expr"
-	"github.com/c0mm4nd/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/expr"
+	"github.com/hybridgroup/wasman/leb128decode"
 )
 
 // DataSegment is one unit of the wasman.Module's DataSection, initializing

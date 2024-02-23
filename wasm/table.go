@@ -1,6 +1,6 @@
 package wasm
 
-import "github.com/c0mm4nd/wasman/types"
+import "github.com/hybridgroup/wasman/types"
 
 // Table is an instance of the table value
 type Table struct {

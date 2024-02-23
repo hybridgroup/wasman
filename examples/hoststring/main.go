@@ -6,8 +6,8 @@ import (
 	"os"
 	"unsafe"
 
-	"github.com/c0mm4nd/wasman"
-	"github.com/c0mm4nd/wasman/config"
+	"github.com/hybridgroup/wasman"
+	"github.com/hybridgroup/wasman/config"
 )
 
 // Run me on root folder

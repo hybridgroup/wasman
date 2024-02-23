@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/c0mm4nd/wasman/config"
-	"github.com/c0mm4nd/wasman/utils"
-	"github.com/c0mm4nd/wasman/wasm"
+	"github.com/hybridgroup/wasman/config"
+	"github.com/hybridgroup/wasman/utils"
+	"github.com/hybridgroup/wasman/wasm"
 
-	"github.com/c0mm4nd/wasman/segments"
-	"github.com/c0mm4nd/wasman/types"
+	"github.com/hybridgroup/wasman/segments"
+	"github.com/hybridgroup/wasman/types"
 )
 
 // errors on linking modules

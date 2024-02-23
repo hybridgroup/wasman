@@ -3,7 +3,7 @@ package wasm
 import (
 	"errors"
 
-	"github.com/c0mm4nd/wasman/types"
+	"github.com/hybridgroup/wasman/types"
 )
 
 // errors of func

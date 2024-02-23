@@ -1,3 +1,3 @@
-module github.com/c0mm4nd/wasman
+module github.com/hybridgroup/wasman
 
 go 1.18

@@ -3,7 +3,7 @@ package config
 import (
 	"errors"
 
-	"github.com/c0mm4nd/wasman/tollstation"
+	"github.com/hybridgroup/wasman/tollstation"
 )
 
 const (

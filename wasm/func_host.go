@@ -1,7 +1,7 @@
 package wasm
 
 import (
-	"github.com/c0mm4nd/wasman/types"
+	"github.com/hybridgroup/wasman/types"
 )
 
 // Host-defined function that accepts and returns raw values.

@@ -3,8 +3,8 @@ package wasm
 import (
 	"fmt"
 
-	"github.com/c0mm4nd/wasman/stacks"
-	"github.com/c0mm4nd/wasman/types"
+	"github.com/hybridgroup/wasman/stacks"
+	"github.com/hybridgroup/wasman/types"
 )
 
 type wasmFunc struct {

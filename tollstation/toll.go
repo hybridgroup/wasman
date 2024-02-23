@@ -4,7 +4,7 @@ import (
 	"errors"
 	"math"
 
-	"github.com/c0mm4nd/wasman/expr"
+	"github.com/hybridgroup/wasman/expr"
 )
 
 var (

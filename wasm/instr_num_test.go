@@ -3,7 +3,7 @@ package wasm
 import (
 	"testing"
 
-	"github.com/c0mm4nd/wasman/stacks"
+	"github.com/hybridgroup/wasman/stacks"
 )
 
 type NumTestSet struct {
