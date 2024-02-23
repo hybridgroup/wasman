@@ -6,6 +6,8 @@
 
 Another wasm interpreter engine for gophers.
 
+This is a substantially modified fork of https://github.com/c0mm4nd/wasman by way of https://github.com/orsinium-forks/wasman for the purpose of major bugfixing.
+
 ## Usage
 
 ### Executable
