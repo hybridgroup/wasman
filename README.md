@@ -2,7 +2,7 @@
 
 [![](https://godoc.org/github.com/hybridgroup/wasman?status.svg)](http://godoc.org/github.com/hybridgroup/wasman)
 [![Go Report Card](https://goreportcard.com/badge/github.com/hybridgroup/wasman)](https://goreportcard.com/report/github.com/hybridgroup/wasman)
-![CI](https://github.com/hybridgroup/wasman/workflows/CI/badge.svg)
+[![Go](https://github.com/hybridgroup/wasman/actions/workflows/ci.yml/badge.svg)](https://github.com/hybridgroup/wasman/actions/workflows/ci.yml)
 
 Another wasm interpreter engine for gophers.
 
