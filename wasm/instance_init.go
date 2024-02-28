@@ -292,6 +292,7 @@ func (ins *Instance) readBlockType(r *bytes.Reader) (*blockType, uint64, error) 
 		ret = &blockType{ReturnTypes: []types.ValueType{types.ValueTypeF32}}
 	case -4: // 0x7c in original byte = f64
 		ret = &blockType{ReturnTypes: []types.ValueType{types.ValueTypeF64}}
+		// TODO: add something here for externalref?
 	default:
 		if raw < 0 || (raw >= int64(len(ins.TypeSection))) {
 			return nil, 0, fmt.Errorf("invalid block type: %d", raw)

@@ -26,6 +26,8 @@ const (
 	ValueTypeF32 ValueType = 0x7d
 	// ValueTypeF64 classify 64 bit floating-point data, known as double
 	ValueTypeF64 ValueType = 0x7c
+	// ValueTypeExternref is a externref type.
+	ValueTypeExternref ValueType = 0x6f
 )
 
 // String will convert the types.ValueType into a string
@@ -39,6 +41,8 @@ func (v ValueType) String() string {
 		return "f32"
 	case ValueTypeF64:
 		return "f64"
+	case ValueTypeExternref:
+		return "externref"
 	default:
 		return "unknown value type"
 	}
@@ -55,7 +59,7 @@ func ReadValueTypes(r io.Reader, num uint32) ([]ValueType, error) {
 
 	for i, v := range buf {
 		switch vt := ValueType(v); vt {
-		case ValueTypeI32, ValueTypeF32, ValueTypeI64, ValueTypeF64:
+		case ValueTypeI32, ValueTypeF32, ValueTypeI64, ValueTypeF64, ValueTypeExternref:
 			ret[i] = vt
 		default:
 			return nil, fmt.Errorf("invalid value type: %d", vt)
