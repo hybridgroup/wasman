@@ -62,6 +62,10 @@ func DefineFunc01[Z Primitive](l *Linker, modName, funcName string, f func() Z) 
 	return l.defineFunc(modName, funcName, wrapFunc01(f), []any{}, []any{*new(Z)})
 }
 
+func DefineFunc02[Y, Z Primitive](l *Linker, modName, funcName string, f func() (Y, Z)) error {
+	return l.defineFunc(modName, funcName, wrapFunc02(f), []any{}, []any{*new(Y), *new(Z)})
+}
+
 func DefineFunc10[A Primitive](l *Linker, modName, funcName string, f func(A)) error {
 	return l.defineFunc(modName, funcName, wrapFunc10(f), []any{*new(A)}, []any{})
 }
@@ -70,12 +74,28 @@ func DefineFunc11[A, Z Primitive](l *Linker, modName, funcName string, f func(A)
 	return l.defineFunc(modName, funcName, wrapFunc11(f), []any{*new(A)}, []any{*new(Z)})
 }
 
+func DefineFunc12[A, Y, Z Primitive](l *Linker, modName, funcName string, f func(A) (Y, Z)) error {
+	return l.defineFunc(modName, funcName, wrapFunc12(f), []any{*new(A)}, []any{*new(Y), *new(Z)})
+}
+
 func DefineFunc20[A, B Primitive](l *Linker, modName, funcName string, f func(A, B)) error {
 	return l.defineFunc(modName, funcName, wrapFunc20(f), []any{*new(A), *new(B)}, []any{})
 }
 
 func DefineFunc21[A, B, Z Primitive](l *Linker, modName, funcName string, f func(A, B) Z) error {
 	return l.defineFunc(modName, funcName, wrapFunc21(f), []any{*new(A), *new(B)}, []any{*new(Z)})
+}
+
+func DefineFunc22[A, B, Y, Z Primitive](l *Linker, modName, funcName string, f func(A, B) (Y, Z)) error {
+	return l.defineFunc(modName, funcName, wrapFunc22(f), []any{*new(A), *new(B)}, []any{*new(Y), *new(Z)})
+}
+
+func DefineFunc31[A, B, C, Z Primitive](l *Linker, modName, funcName string, f func(A, B, C) Z) error {
+	return l.defineFunc(modName, funcName, wrapFunc31(f), []any{*new(A), *new(B), *new(C)}, []any{*new(Z)})
+}
+
+func DefineFunc32[A, B, C, Y, Z Primitive](l *Linker, modName, funcName string, f func(A, B, C) (Y, Z)) error {
+	return l.defineFunc(modName, funcName, wrapFunc32(f), []any{*new(A), *new(B), *new(C)}, []any{*new(Y), *new(Z)})
 }
 
 // DefineFunc puts a simple go style func into Linker's modules.
@@ -265,6 +285,14 @@ func wrapFunc01[Z Primitive](f func() Z) wasm.RawHostFunc {
 	return wrapper
 }
 
+func wrapFunc02[Y, Z Primitive](f func() (Y, Z)) wasm.RawHostFunc {
+	wrapper := func(a []uint64) []uint64 {
+		r1, r2 := f()
+		return []uint64{toU(r1), toU(r2)}
+	}
+	return wrapper
+}
+
 func wrapFunc10[A Primitive](f func(A)) wasm.RawHostFunc {
 	wrapper := func(a []uint64) []uint64 {
 		a1 := fromU[A](a[0])
@@ -279,6 +307,15 @@ func wrapFunc11[A, Z Primitive](f func(A) Z) wasm.RawHostFunc {
 		a1 := fromU[A](a[0])
 		r1 := f(a1)
 		return []uint64{toU(r1)}
+	}
+	return wrapper
+}
+
+func wrapFunc12[A, Y, Z Primitive](f func(A) (Y, Z)) wasm.RawHostFunc {
+	wrapper := func(a []uint64) []uint64 {
+		a1 := fromU[A](a[0])
+		r1, r2 := f(a1)
+		return []uint64{toU(r1), toU(r2)}
 	}
 	return wrapper
 }
@@ -299,6 +336,38 @@ func wrapFunc21[A, B, Z Primitive](f func(A, B) Z) wasm.RawHostFunc {
 		a2 := fromU[B](a[1])
 		r1 := f(a1, a2)
 		return []uint64{toU(r1)}
+	}
+	return wrapper
+}
+
+func wrapFunc22[A, B, Y, Z Primitive](f func(A, B) (Y, Z)) wasm.RawHostFunc {
+	wrapper := func(a []uint64) []uint64 {
+		a1 := fromU[A](a[0])
+		a2 := fromU[B](a[1])
+		r1, r2 := f(a1, a2)
+		return []uint64{toU(r1), toU(r2)}
+	}
+	return wrapper
+}
+
+func wrapFunc31[A, B, C, Z Primitive](f func(A, B, C) Z) wasm.RawHostFunc {
+	wrapper := func(a []uint64) []uint64 {
+		a1 := fromU[A](a[0])
+		a2 := fromU[B](a[1])
+		a3 := fromU[C](a[2])
+		r1 := f(a1, a2, a3)
+		return []uint64{toU(r1)}
+	}
+	return wrapper
+}
+
+func wrapFunc32[A, B, C, Y, Z Primitive](f func(A, B, C) (Y, Z)) wasm.RawHostFunc {
+	wrapper := func(a []uint64) []uint64 {
+		a1 := fromU[A](a[0])
+		a2 := fromU[B](a[1])
+		a3 := fromU[C](a[2])
+		r1, r2 := f(a1, a2, a3)
+		return []uint64{toU(r1), toU(r2)}
 	}
 	return wrapper
 }
