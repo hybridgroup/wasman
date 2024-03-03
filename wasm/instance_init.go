@@ -9,6 +9,7 @@ import (
 	"github.com/hybridgroup/wasman/leb128decode"
 	"github.com/hybridgroup/wasman/segments"
 	"github.com/hybridgroup/wasman/types"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 // buildIndexSpaces build index spaces of the module with the given external modules
@@ -274,7 +275,7 @@ func (ins *Instance) buildTableIndexSpace() error {
 
 type blockType = types.FuncType
 
-func (ins *Instance) readBlockType(r *bytes.Reader) (*blockType, uint64, error) {
+func (ins *Instance) readBlockType(r utils.Reader) (*blockType, uint64, error) {
 	raw, l, err := leb128decode.DecodeInt33AsInt64(r)
 	if err != nil {
 		return nil, 0, fmt.Errorf("decode int33: %w", err)

@@ -2,9 +2,15 @@ package config
 
 import (
 	"errors"
+	"io"
 
 	"github.com/hybridgroup/wasman/tollstation"
 )
+
+type Reader interface {
+	io.Reader
+	io.ReaderAt
+}
 
 const (
 	// MemoryPageSize is the unit of memory length in WebAssembly,

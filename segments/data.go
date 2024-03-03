@@ -1,12 +1,12 @@
 package segments
 
 import (
-	"bytes"
 	"fmt"
 	"io"
 
 	"github.com/hybridgroup/wasman/expr"
 	"github.com/hybridgroup/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 // DataSegment is one unit of the wasman.Module's DataSection, initializing
@@ -20,7 +20,7 @@ type DataSegment struct {
 }
 
 // ReadDataSegment reads one DataSegment from the io.Reader
-func ReadDataSegment(r *bytes.Reader) (*DataSegment, error) {
+func ReadDataSegment(r utils.Reader) (*DataSegment, error) {
 	d, _, err := leb128decode.DecodeUint32(r)
 	if err != nil {
 		return nil, fmt.Errorf("read memory index: %w", err)

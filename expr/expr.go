@@ -1,7 +1,6 @@
 package expr
 
 import (
-	"bytes"
 	"fmt"
 
 	"github.com/hybridgroup/wasman/leb128decode"
@@ -16,47 +15,58 @@ type Expression struct {
 }
 
 // ReadExpression will read an expr.Expression from the io.Reader
-func ReadExpression(r *bytes.Reader) (*Expression, error) {
-	b, err := r.ReadByte()
+func ReadExpression(r utils.Reader) (*Expression, error) {
+	var b [1]byte
+	_, err := r.Read(b[:])
 	if err != nil {
 		return nil, fmt.Errorf("read opcode: %v", err)
 	}
 
-	remainingBeforeData := int64(r.Len())
-	offsetAtData := r.Size() - remainingBeforeData
-
-	op := OpCode(b)
+	n := uint64(0)
+	op := OpCode(b[0])
 
 	switch op {
 	case OpCodeI32Const:
-		_, _, err = leb128decode.DecodeInt32(r)
+		_, n, err = leb128decode.DecodeInt32(r)
 	case OpCodeI64Const:
-		_, _, err = leb128decode.DecodeInt64(r)
+		_, n, err = leb128decode.DecodeInt64(r)
 	case OpCodeF32Const:
 		_, err = utils.ReadFloat32(r)
+		n = 4
 	case OpCodeF64Const:
 		_, err = utils.ReadFloat64(r)
+		n = 8
 	case OpCodeGlobalGet:
-		_, _, err = leb128decode.DecodeUint32(r)
+		_, n, err = leb128decode.DecodeUint32(r)
 	default:
-		return nil, fmt.Errorf("%v for opcodes.OpCode: %#x", types.ErrInvalidTypeByte, b)
+		return nil, fmt.Errorf("%v for opcodes.OpCode: %#x", types.ErrInvalidTypeByte, b[0])
 	}
 
 	if err != nil {
 		return nil, fmt.Errorf("read value: %v", err)
 	}
 
-	if b, err = r.ReadByte(); err != nil {
+	if _, err = r.Read(b[:]); err != nil {
 		return nil, fmt.Errorf("look for end opcode: %v", err)
 	}
 
-	if b != byte(OpCodeEnd) {
+	if b[0] != byte(OpCodeEnd) {
 		return nil, fmt.Errorf("constant expression has not terminated")
 	}
 
-	data := make([]byte, remainingBeforeData-int64(r.Len())-1)
-	if _, err := r.ReadAt(data, offsetAtData); err != nil {
+	// skip back
+	if _, err := r.Seek(-1*int64(n+1), 1); err != nil {
+		return nil, fmt.Errorf("error seeking back to read Expression Data")
+	}
+
+	data := make([]byte, n)
+	if _, err := r.Read(data); err != nil {
 		return nil, fmt.Errorf("error re-buffering Expression Data")
+	}
+
+	// skip past end opcode
+	if _, err := r.Read(b[:]); err != nil {
+		return nil, fmt.Errorf("error skipping past OpCodeEnd")
 	}
 
 	return &Expression{

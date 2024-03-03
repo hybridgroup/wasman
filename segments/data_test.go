@@ -39,10 +39,10 @@ func TestDataSegment(t *testing.T) {
 		t.Run(utils.IntToString(i), func(t *testing.T) {
 			actual, err := segments.ReadDataSegment(bytes.NewReader(c.bytes))
 			if err != nil {
-				t.Fail()
+				t.Error(err)
 			}
 			if !reflect.DeepEqual(c.exp, actual) {
-				t.Fail()
+				t.Errorf("expected %v, got %v", c.exp, actual)
 			}
 		})
 	}

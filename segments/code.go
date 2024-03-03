@@ -1,12 +1,12 @@
 package segments
 
 import (
-	"bytes"
 	"fmt"
 	"io"
 
 	"github.com/hybridgroup/wasman/expr"
 	"github.com/hybridgroup/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 // CodeSegment is one unit in the wasman.Module's CodeSection
@@ -16,7 +16,7 @@ type CodeSegment struct {
 }
 
 // ReadCodeSegment reads one CodeSegment from the io.Reader
-func ReadCodeSegment(r *bytes.Reader) (*CodeSegment, error) {
+func ReadCodeSegment(r utils.Reader) (*CodeSegment, error) {
 	ss, _, err := leb128decode.DecodeUint32(r)
 	if err != nil {
 		return nil, fmt.Errorf("get the size of code segment: %w", err)
@@ -34,6 +34,7 @@ func ReadCodeSegment(r *bytes.Reader) (*CodeSegment, error) {
 
 	var numLocals uint32
 	var n uint32
+	var b [1]byte
 	for i := uint32(0); i < ls; i++ {
 		n, bytesRead, err = leb128decode.DecodeUint32(r)
 		remaining -= int64(bytesRead) + 1 // +1 for the subsequent ReadByte
@@ -44,7 +45,7 @@ func ReadCodeSegment(r *bytes.Reader) (*CodeSegment, error) {
 		}
 		numLocals += n
 
-		if _, err := r.ReadByte(); err != nil {
+		if _, err := r.Read(b[:]); err != nil {
 			return nil, fmt.Errorf("read type of local") // TODO: save read localType
 		}
 	}

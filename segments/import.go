@@ -1,12 +1,12 @@
 package segments
 
 import (
-	"bytes"
 	"fmt"
 	"io"
 
 	"github.com/hybridgroup/wasman/leb128decode"
 	"github.com/hybridgroup/wasman/types"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 // ImportDesc means import descriptions, which describe an import in one wasman.Module
@@ -20,7 +20,7 @@ type ImportDesc struct {
 }
 
 // ReadImportDesc reads one ImportDesc from the io.Reader
-func ReadImportDesc(r *bytes.Reader) (*ImportDesc, error) {
+func ReadImportDesc(r utils.Reader) (*ImportDesc, error) {
 	b := make([]byte, 1)
 	if _, err := io.ReadFull(r, b); err != nil {
 		return nil, fmt.Errorf("read value kind: %w", err)
@@ -77,7 +77,7 @@ type ImportSegment struct {
 }
 
 // ReadImportSegment reads one ImportSegment from the io.Reader
-func ReadImportSegment(r *bytes.Reader) (*ImportSegment, error) {
+func ReadImportSegment(r utils.Reader) (*ImportSegment, error) {
 	mn, err := types.ReadNameValue(r)
 	if err != nil {
 		return nil, fmt.Errorf("read name of imported module: %w", err)
