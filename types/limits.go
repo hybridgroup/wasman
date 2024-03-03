@@ -1,11 +1,11 @@
 package types
 
 import (
-	"bytes"
 	"fmt"
 	"io"
 
 	"github.com/hybridgroup/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 // Limits classify the size range of resizeable storage associated with memory types and table types
@@ -16,7 +16,7 @@ type Limits struct {
 }
 
 // ReadLimits will read a types.Limits from the io.Reader
-func ReadLimits(r *bytes.Reader) (*Limits, error) {
+func ReadLimits(r utils.Reader) (*Limits, error) {
 	b := make([]byte, 1)
 	_, err := io.ReadFull(r, b)
 	if err != nil {

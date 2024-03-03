@@ -1,11 +1,11 @@
 package segments
 
 import (
-	"bytes"
 	"fmt"
 
 	"github.com/hybridgroup/wasman/expr"
 	"github.com/hybridgroup/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 // ElemSegment is one unit of the wasm.Module's ElementsSection, initializing
@@ -19,7 +19,7 @@ type ElemSegment struct {
 }
 
 // ReadElemSegment reads one ElemSegment from the io.Reader
-func ReadElemSegment(r *bytes.Reader) (*ElemSegment, error) {
+func ReadElemSegment(r utils.Reader) (*ElemSegment, error) {
 	ti, _, err := leb128decode.DecodeUint32(r)
 	if err != nil {
 		return nil, fmt.Errorf("get table index: %w", err)

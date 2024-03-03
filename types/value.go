@@ -1,12 +1,12 @@
 package types
 
 import (
-	"bytes"
 	"errors"
 	"fmt"
 	"io"
 
 	"github.com/hybridgroup/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 // ErrInvalidTypeByte means the type byte mismatches the one from wasm binary
@@ -69,7 +69,7 @@ func ReadValueTypes(r io.Reader, num uint32) ([]ValueType, error) {
 }
 
 // ReadNameValue will read a name string from the io.Reader
-func ReadNameValue(r *bytes.Reader) (string, error) {
+func ReadNameValue(r utils.Reader) (string, error) {
 	vs, _, err := leb128decode.DecodeUint32(r)
 	if err != nil {
 		return "", fmt.Errorf("read size of name: %w", err)

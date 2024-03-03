@@ -1,11 +1,11 @@
 package segments
 
 import (
-	"bytes"
 	"fmt"
 
 	"github.com/hybridgroup/wasman/expr"
 	"github.com/hybridgroup/wasman/types"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 // GlobalSegment is one unit of the wasm.Module's GlobalSection
@@ -15,7 +15,7 @@ type GlobalSegment struct {
 }
 
 // ReadGlobalSegment reads one GlobalSegment from the io.Reader
-func ReadGlobalSegment(r *bytes.Reader) (*GlobalSegment, error) {
+func ReadGlobalSegment(r utils.Reader) (*GlobalSegment, error) {
 	gt, err := types.ReadGlobalType(r)
 	if err != nil {
 		return nil, fmt.Errorf("read global type: %w", err)

@@ -1,11 +1,11 @@
 package types
 
 import (
-	"bytes"
 	"fmt"
 	"io"
 
 	"github.com/hybridgroup/wasman/leb128decode"
+	"github.com/hybridgroup/wasman/utils"
 )
 
 // FuncType classify the signature of functions, mapping a vector of parameters to a vector of results, written as follows.
@@ -15,7 +15,7 @@ type FuncType struct {
 }
 
 // ReadFuncType will read a types.ReadFuncType from the io.Reader
-func ReadFuncType(r *bytes.Reader) (*FuncType, error) {
+func ReadFuncType(r utils.Reader) (*FuncType, error) {
 	b := make([]byte, 1)
 	if _, err := io.ReadFull(r, b); err != nil {
 		return nil, fmt.Errorf("read leading byte: %w", err)
