@@ -55,52 +55,53 @@ func (l *Linker) Define(modName string, mod *Module) {
 }
 
 func DefineFunc(l *Linker, modName, funcName string, f func()) error {
-	return l.defineFunc(modName, funcName, wrapFunc00(f), []any{}, []any{})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc00(f), []any{}, []any{})
 }
 
 func DefineFunc01[Z Primitive](l *Linker, modName, funcName string, f func() Z) error {
-	return l.defineFunc(modName, funcName, wrapFunc01(f), []any{}, []any{*new(Z)})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc01(f), []any{}, []any{*new(Z)})
 }
 
 func DefineFunc02[Y, Z Primitive](l *Linker, modName, funcName string, f func() (Y, Z)) error {
-	return l.defineFunc(modName, funcName, wrapFunc02(f), []any{}, []any{*new(Y), *new(Z)})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc02(f), []any{}, []any{*new(Y), *new(Z)})
 }
 
 func DefineFunc10[A Primitive](l *Linker, modName, funcName string, f func(A)) error {
-	return l.defineFunc(modName, funcName, wrapFunc10(f), []any{*new(A)}, []any{})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc10(f), []any{*new(A)}, []any{})
 }
 
 func DefineFunc11[A, Z Primitive](l *Linker, modName, funcName string, f func(A) Z) error {
-	return l.defineFunc(modName, funcName, wrapFunc11(f), []any{*new(A)}, []any{*new(Z)})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc11(f), []any{*new(A)}, []any{*new(Z)})
 }
 
 func DefineFunc12[A, Y, Z Primitive](l *Linker, modName, funcName string, f func(A) (Y, Z)) error {
-	return l.defineFunc(modName, funcName, wrapFunc12(f), []any{*new(A)}, []any{*new(Y), *new(Z)})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc12(f), []any{*new(A)}, []any{*new(Y), *new(Z)})
 }
 
 func DefineFunc20[A, B Primitive](l *Linker, modName, funcName string, f func(A, B)) error {
-	return l.defineFunc(modName, funcName, wrapFunc20(f), []any{*new(A), *new(B)}, []any{})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc20(f), []any{*new(A), *new(B)}, []any{})
 }
 
 func DefineFunc21[A, B, Z Primitive](l *Linker, modName, funcName string, f func(A, B) Z) error {
-	return l.defineFunc(modName, funcName, wrapFunc21(f), []any{*new(A), *new(B)}, []any{*new(Z)})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc21(f), []any{*new(A), *new(B)}, []any{*new(Z)})
 }
 
 func DefineFunc22[A, B, Y, Z Primitive](l *Linker, modName, funcName string, f func(A, B) (Y, Z)) error {
-	return l.defineFunc(modName, funcName, wrapFunc22(f), []any{*new(A), *new(B)}, []any{*new(Y), *new(Z)})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc22(f), []any{*new(A), *new(B)}, []any{*new(Y), *new(Z)})
 }
 
 func DefineFunc31[A, B, C, Z Primitive](l *Linker, modName, funcName string, f func(A, B, C) Z) error {
-	return l.defineFunc(modName, funcName, wrapFunc31(f), []any{*new(A), *new(B), *new(C)}, []any{*new(Z)})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc31(f), []any{*new(A), *new(B), *new(C)}, []any{*new(Z)})
 }
 
 func DefineFunc32[A, B, C, Y, Z Primitive](l *Linker, modName, funcName string, f func(A, B, C) (Y, Z)) error {
-	return l.defineFunc(modName, funcName, wrapFunc32(f), []any{*new(A), *new(B), *new(C)}, []any{*new(Y), *new(Z)})
+	return l.DefineRawHostFunc(modName, funcName, wrapFunc32(f), []any{*new(A), *new(B), *new(C)}, []any{*new(Y), *new(Z)})
 }
 
-// DefineFunc puts a simple go style func into Linker's modules.
-// This f should be a simply func which doesnt handle ins's fields.
-func (l *Linker) defineFunc(modName, funcName string, f wasm.RawHostFunc, ins []any, outs []any) error {
+// DefineRawHostFunc puts a simple raw func into Linker's modules.
+func (l *Linker) DefineRawHostFunc(
+	modName, funcName string, f wasm.RawHostFunc, ins []any, outs []any,
+) error {
 	var err error
 	sig := &types.FuncType{}
 	sig.InputTypes, err = getTypesOf(ins)
